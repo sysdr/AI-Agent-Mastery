@@ -1,0 +1,33 @@
+{
+  "document_id": "326db82c-e09a-4b8d-9411-098dcff30c59",
+  "user_id": "demo_user",
+  "created_at": "2025-08-29T07:11:17.537937",
+  "file_metadata": {
+    "filename": "Twitter Media CDN - Google Chrome 26-08-2025 11_46_25.png",
+    "file_hash": "8a84ec95de1f15e7025504d39a43d905a13f560856f4587c7f73d4bd2bfaa9f4",
+    "file_size": 97983,
+    "content_type": "image/png",
+    "file_extension": ".png",
+    "extracted_at": "2025-08-29T07:11:17.499903",
+    "version": "1.0",
+    "image_width": 1920,
+    "image_height": 1020,
+    "image_mode": "RGBA",
+    "image_format": "PNG",
+    "content_analysis": "Not applicable for this file type"
+  },
+  "pii_summary": {
+    "total_entities": 0,
+    "entity_types": [],
+    "risk_level": "low",
+    "compliance_flags": [],
+    "entities": []
+  },
+  "access_level": "standard",
+  "encryption_info": {
+    "algorithm": "Fernet",
+    "key_id": "16234815a67ebd81"
+  },
+  "compliance_flags": [],
+  "risk_level": "low"
+}
