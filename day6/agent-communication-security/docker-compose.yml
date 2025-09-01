@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass redis_password
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - JWT_SECRET=your-jwt-secret-change-in-production
+      - MASTER_KEY=your-master-encryption-key-change-in-production
+      - GEMINI_API_KEY=your-gemini-api-key
+    depends_on:
+      - redis
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
