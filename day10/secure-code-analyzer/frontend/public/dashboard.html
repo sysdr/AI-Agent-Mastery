@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Code Analysis Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border-left: 4px solid #1976d2;
+        }
+        
+        .stat-card h3 {
+            color: #1976d2;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .analysis-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .analysis-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1976d2;
+            padding-bottom: 10px;
+        }
+        
+        .code-input {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #1565c0;
+        }
+        
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .finding {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .finding.critical {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        .finding.high {
+            background: #ffeaa7;
+            border-color: #fdcb6e;
+        }
+        
+        .finding.medium {
+            background: #d1ecf1;
+            border-color: #bee5eb;
+        }
+        
+        .severity {
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .severity.critical {
+            color: #721c24;
+        }
+        
+        .severity.high {
+            color: #856404;
+        }
+        
+        .severity.medium {
+            color: #0c5460;
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status.loading {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔒 Secure Code Analysis Dashboard</h1>
+            <p>Real-time security vulnerability detection and analysis</p>
+        </div>
+        
+        <div class="content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalFindings">0</h3>
+                    <p>Total Findings</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="criticalFindings">0</h3>
+                    <p>Critical Issues</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="highFindings">0</h3>
+                    <p>High Severity</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="mediumFindings">0</h3>
+                    <p>Medium Severity</p>
+                </div>
+            </div>
+            
+            <div class="analysis-section">
+                <h2>Code Analysis</h2>
+                <textarea class="code-input" id="codeInput" placeholder="Enter your code here for security analysis...">password = "hardcoded123"
+query = "SELECT * FROM users WHERE id = " + user_id</textarea>
+                <button class="btn" onclick="analyzeCode()">Analyze Code</button>
+                
+                <div id="status"></div>
+                <div id="results"></div>
+            </div>
+            
+            <div class="analysis-section">
+                <h2>Security Patterns</h2>
+                <div id="patterns"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let totalFindings = 0;
+        let criticalFindings = 0;
+        let highFindings = 0;
+        let mediumFindings = 0;
+
+        async function checkBackendStatus() {
+            try {
+                const response = await fetch('http://localhost:8000/health');
+                const data = await response.json();
+                console.log('Backend status:', data);
+                return true;
+            } catch (error) {
+                console.error('Backend not available:', error);
+                return false;
+            }
+        }
+
+        async function loadPatterns() {
+            try {
+                const response = await fetch('http://localhost:8000/api/security/patterns');
+                const data = await response.json();
+                
+                const patternsDiv = document.getElementById('patterns');
+                patternsDiv.innerHTML = '<h3>Available Security Patterns:</h3>';
+                
+                for (const [patternName, pattern] of Object.entries(data.patterns)) {
+                    const patternCard = document.createElement('div');
+                    patternCard.className = 'finding';
+                    patternCard.innerHTML = `
+                        <div class="severity ${pattern.severity}">${pattern.severity.toUpperCase()}</div>
+                        <strong>${patternName.replace('_', ' ').toUpperCase()}</strong><br>
+                        ${pattern.message}<br>
+                        <small>CWE: ${pattern.cwe}</small>
+                    `;
+                    patternsDiv.appendChild(patternCard);
+                }
+            } catch (error) {
+                console.error('Error loading patterns:', error);
+            }
+        }
+
+        async function analyzeCode() {
+            const codeInput = document.getElementById('codeInput');
+            const statusDiv = document.getElementById('status');
+            const resultsDiv = document.getElementById('results');
+            
+            if (!codeInput.value.trim()) {
+                statusDiv.innerHTML = '<div class="status error">Please enter some code to analyze</div>';
+                return;
+            }
+            
+            statusDiv.innerHTML = '<div class="status loading">Analyzing code...</div>';
+            resultsDiv.innerHTML = '';
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/security/analyze-code', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        code: codeInput.value,
+                        file_path: 'analysis.py'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.findings && data.findings.length > 0) {
+                    statusDiv.innerHTML = '<div class="status success">Analysis completed - Issues found!</div>';
+                    
+                    resultsDiv.innerHTML = '<h3>Security Findings:</h3>';
+                    
+                    data.findings.forEach(finding => {
+                        const findingDiv = document.createElement('div');
+                        findingDiv.className = `finding ${finding.severity}`;
+                        findingDiv.innerHTML = `
+                            <div class="severity ${finding.severity}">${finding.severity.toUpperCase()}</div>
+                            <strong>${finding.message}</strong><br>
+                            <small>Line ${finding.line_number}: ${finding.code_snippet}</small><br>
+                            <em>Recommendation: ${finding.recommendation}</em><br>
+                            <small>CWE: ${finding.cwe_id}</small>
+                        `;
+                        resultsDiv.appendChild(findingDiv);
+                    });
+                    
+                    // Update stats
+                    totalFindings += data.summary.total_findings;
+                    criticalFindings += data.summary.critical;
+                    highFindings += data.summary.high;
+                    mediumFindings += data.summary.medium;
+                    
+                    updateStats();
+                } else {
+                    statusDiv.innerHTML = '<div class="status success">Analysis completed - No issues found!</div>';
+                    resultsDiv.innerHTML = '<p>Great! No security vulnerabilities detected in the provided code.</p>';
+                }
+                
+            } catch (error) {
+                console.error('Error analyzing code:', error);
+                statusDiv.innerHTML = '<div class="status error">Error analyzing code. Please check if the backend is running.</div>';
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('totalFindings').textContent = totalFindings;
+            document.getElementById('criticalFindings').textContent = criticalFindings;
+            document.getElementById('highFindings').textContent = highFindings;
+            document.getElementById('mediumFindings').textContent = mediumFindings;
+        }
+
+        // Initialize dashboard
+        async function init() {
+            const isBackendRunning = await checkBackendStatus();
+            if (isBackendRunning) {
+                await loadPatterns();
+                document.getElementById('status').innerHTML = '<div class="status success">Backend connected successfully!</div>';
+            } else {
+                document.getElementById('status').innerHTML = '<div class="status error">Backend not available. Please start the backend server.</div>';
+            }
+        }
+
+        // Start the dashboard
+        init();
+    </script>
+</body>
+</html>
