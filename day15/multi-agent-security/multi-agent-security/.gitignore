@@ -322,5 +322,3 @@ docker-compose.override.yml
 *.7z
 
 # Project specific
-dashboard.html
-demo.py
