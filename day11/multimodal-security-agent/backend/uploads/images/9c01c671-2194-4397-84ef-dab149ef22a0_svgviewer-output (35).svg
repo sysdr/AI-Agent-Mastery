@@ -1,0 +1,147 @@
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#0000001a"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="800" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="400" y="25" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2563eb">Security Analysis Process Flow</text>
+  
+  <!-- Start -->
+  <g transform="translate(350, 40)">
+    <circle cx="50" cy="25" r="25" fill="#10b981" stroke="#047857" stroke-width="2" filter="url(#shadow)"/>
+    <text x="50" y="25" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">START</text>
+  </g>
+  
+  <!-- File Upload -->
+  <g transform="translate(300, 120)">
+    <rect width="200" height="50" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+    <text x="100" y="18" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e40af">File Upload Received</text>
+    <text x="100" y="35" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#3b82f6">Size and Type Validation</text>
+  </g>
+  
+  <!-- Decision Diamond - File Type -->
+  <g transform="translate(350, 210)">
+    <polygon points="50,0 100,25 50,50 0,25" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="50" y="20" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" font-weight="bold" fill="#92400e">File Type?</text>
+    <text x="50" y="32" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#92400e">Detection</text>
+  </g>
+  
+  <!-- Image Processing Path -->
+  <g transform="translate(80, 300)">
+    <rect width="150" height="80" rx="8" fill="#d1fae5" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+    <text x="75" y="15" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#047857">Image Analysis</text>
+    <text x="75" y="30" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#059669">• EXIF extraction</text>
+    <text x="75" y="43" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#059669">• Malware scan</text>
+    <text x="75" y="56" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#059669">• Content moderation</text>
+    <text x="75" y="69" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#059669">• Steganography check</text>
+  </g>
+  
+  <!-- Document Processing Path -->
+  <g transform="translate(325, 300)">
+    <rect width="150" height="80" rx="8" fill="#ddd6fe" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+    <text x="75" y="15" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#5b21b6">Document Analysis</text>
+    <text x="75" y="30" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#7c3aed">• OCR processing</text>
+    <text x="75" y="43" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#7c3aed">• PII detection</text>
+    <text x="75" y="56" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#7c3aed">• Content classification</text>
+    <text x="75" y="69" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#7c3aed">• Metadata analysis</text>
+  </g>
+  
+  <!-- Audio Processing Path -->
+  <g transform="translate(570, 300)">
+    <rect width="150" height="80" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="75" y="15" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Audio Analysis</text>
+    <text x="75" y="30" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#d97706">• Speech-to-text</text>
+    <text x="75" y="43" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#d97706">• Content filtering</text>
+    <text x="75" y="56" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#d97706">• Acoustic analysis</text>
+    <text x="75" y="69" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#d97706">• Anomaly detection</text>
+  </g>
+  
+  <!-- AI Risk Assessment -->
+  <g transform="translate(300, 420)">
+    <rect width="200" height="60" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <text x="100" y="20" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#991b1b">AI Risk Classification</text>
+    <text x="100" y="35" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#dc2626">Gemini API Analysis</text>
+    <text x="100" y="48" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#dc2626">Risk Score Generation</text>
+  </g>
+  
+  <!-- Decision Diamond - Risk Level -->
+  <g transform="translate(350, 520)">
+    <polygon points="50,0 100,25 50,50 0,25" fill="#fecaca" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <text x="50" y="20" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" font-weight="bold" fill="#991b1b">Risk Level?</text>
+    <text x="50" y="32" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#991b1b">Assessment</text>
+  </g>
+  
+  <!-- Low Risk Path -->
+  <g transform="translate(100, 600)">
+    <rect width="120" height="40" rx="8" fill="#d1fae5" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+    <text x="60" y="15" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"  font-size="12" font-weight="bold" fill="#047857">LOW RISK</text>
+    <text x="60" y="28" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#059669">Auto-approve</text>
+  </g>
+  
+  <!-- Medium Risk Path -->
+  <g transform="translate(340, 600)">
+    <rect width="120" height="40" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="60" y="15" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"  font-size="12" font-weight="bold" fill="#92400e">MEDIUM RISK</text>
+    <text x="60" y="28" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#d97706">Flag for review</text>
+  </g>
+  
+  <!-- High Risk Path -->
+  <g transform="translate(580, 600)">
+    <rect width="120" height="40" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <text x="60" y="15" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"  font-size="12" font-weight="bold" fill="#991b1b">HIGH RISK</text>
+    <text x="60" y="28" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" fill="#dc2626">Quarantine</text>
+  </g>
+  
+  <!-- End -->
+  <g transform="translate(350, 670)">
+    <circle cx="50" cy="15" r="15" fill="#6b7280" stroke="#374151" stroke-width="2" filter="url(#shadow)"/>
+    <text x="50" y="15" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="12" font-weight="bold" fill="#ffffff">END</text>
+  </g>
+  
+  <!-- Flow Arrows -->
+  <!-- Start to File Upload -->
+  <line x1="400" y1="85" x2="400" y2="120" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- File Upload to Decision -->
+  <line x1="400" y1="170" x2="400" y2="210" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Decision to Processing Paths -->
+  <line x1="350" y1="235" x2="200" y2="300" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="400" y1="260" x2="400" y2="300" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="235" x2="600" y2="300" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Processing to AI Assessment -->
+  <line x1="200" y1="380" x2="350" y2="420" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="400" y1="380" x2="400" y2="420" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="380" x2="450" y2="420" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- AI Assessment to Risk Decision -->
+  <line x1="400" y1="480" x2="400" y2="520" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Risk Decision to Actions -->
+  <line x1="350" y1="545" x2="200" y2="600" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="400" y1="570" x2="400" y2="600" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="545" x2="600" y2="600" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Actions to End -->
+  <line x1="200" y1="640" x2="380" y2="670" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="400" y1="640" x2="400" y2="670" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="640" x2="420" y2="670" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Labels -->
+  <text x="270" y="255" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="13" fill="#6b7280">Image</text>
+  <text x="360" y="285" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="13" fill="#6b7280">Document</text>
+  <text x="530" y="255" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="13" fill="#6b7280">Audio</text>
+  
+  <text x="270" y="590" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="13" fill="#6b7280">Low</text>
+  <text x="370" y="590" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="13" fill="#6b7280">Medium</text>
+  <text x="530" y="590" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif"   font-size="13" fill="#6b7280">High</text>
+</svg>
