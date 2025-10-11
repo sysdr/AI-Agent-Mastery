@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  distributed-agents:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app/backend
+    volumes:
+      - ./backend/logs:/app/backend/logs
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - distributed-agents
+    restart: unless-stopped
