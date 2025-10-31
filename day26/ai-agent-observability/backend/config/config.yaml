@@ -1,0 +1,35 @@
+observability:
+  tracing:
+    service_name: "ai-agent-observability"
+    jaeger_endpoint: "http://localhost:14268/api/traces"
+    sampling_rate: 1.0
+  
+  metrics:
+    prometheus_port: 8001
+    custom_metrics_enabled: true
+    anomaly_detection_enabled: true
+  
+  logging:
+    elasticsearch_host: "localhost:9200"
+    log_level: "INFO"
+    structured_logging: true
+  
+  security:
+    threat_detection_enabled: true
+    correlation_window_minutes: 15
+    auto_response_enabled: true
+
+database:
+  url: "postgresql://user:password@localhost:5432/observability"
+  
+redis:
+  url: "redis://localhost:6379/0"
+  
+gemini:
+  api_key: "AIzaSyDGswqDT4wQw_bd4WZtIgYAawRDZ0Gisn8"
+  model: "gemini-pro"
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true
