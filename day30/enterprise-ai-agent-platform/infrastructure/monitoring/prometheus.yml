@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'ai-agent-backend'
+    static_configs:
+      - targets: ['backend:8000']
+    metrics_path: '/metrics'

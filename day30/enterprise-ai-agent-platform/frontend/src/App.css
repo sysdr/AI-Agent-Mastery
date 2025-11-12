@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+  min-height: 100vh;
+}
+
+.dashboard {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.header {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.header h1 {
+  color: #0f172a;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.health-indicators {
+  display: flex;
+  gap: 12px;
+}
+
+.health-badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.health-badge.healthy {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.health-badge.degraded {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.health-badge.down {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 24px;
+}
+
+.metric-card, .chart-card, .chat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.metric-card:hover, .chart-card:hover, .chat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.metric-card h3, .chart-card h3, .chat-card h3 {
+  color: #0f172a;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 12px;
+}
+
+.metrics-display {
+  display: grid;
+  gap: 16px;
+}
+
+.metric-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #0ea5e9;
+  transition: background 0.2s;
+}
+
+.metric-item:hover {
+  background: #f1f5f9;
+}
+
+.metric-label {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.metric-value {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.chart-card {
+  grid-column: span 2;
+}
+
+.chat-card {
+  grid-column: span 2;
+}
+
+.chat-interface {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.chat-button {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  align-self: flex-start;
+}
+
+.chat-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+}
+
+.chat-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.chat-response {
+  padding: 20px;
+  background: #f0f9ff;
+  border-radius: 12px;
+  border-left: 4px solid #0ea5e9;
+}
+
+.chat-response strong {
+  color: #0369a1;
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chat-response p {
+  color: #0f172a;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.footer {
+  text-align: center;
+  padding: 24px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+@media (max-width: 1200px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-card, .chat-card {
+    grid-column: span 1;
+  }
+}
